@@ -2,7 +2,7 @@
 
 ## Mwansa Mwango and Jim Bentley
 
-![alt text](https://github.com/MwansaMwango/rise-of-electric-vehicles/Images/project_cover.jpg "Rise of the EV's!!")
+![alt text](Images/project_cover.jpg "Rise of the EV's!!")
 
 ### Introduction
 From carts to steam and hydrocarbon vehicles, mankind is now entering a new phase of transportation.  Electric Vehicles are set to takeover this decade as the primary type of vehicle on our roads. 
