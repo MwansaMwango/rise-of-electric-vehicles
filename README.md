@@ -3,6 +3,11 @@
 ![alt text](Images/project_cover.jpg "Rise of the EV's!!")
 ### Introduction
 From carts to steam and hydrocarbon vehicles, mankind is now entering a new phase of transportation.  Electric Vehicles are set to takeover this decade as the primary type of vehicle on our roads. 
+
+Our project will look at factors to why EV adoption is increasing.  These factors include:
+1. Price Point - Are EV's becoming more affordable.
+2. Emmissions - Does the method of electric generation have an impact on EV adoption.
+3. Charging Stations - Does the access to EV charging stations influence EV demand. 
 ### Project proposal
 1. Research what recent, historical data is available on EV manufacturing and usage.
 2. Extract, transform and load the data into a Mongo database.
