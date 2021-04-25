@@ -17,7 +17,8 @@
     <!-- Chart code -->
     <script>
     am4core.ready(function() {
-    
+    // Check imported data
+    // console.log(us_ev_sales_data);
     // Themes begin
     am4core.useTheme(am4themes_dark);
     // am4core.useTheme(am4themes_kelly);
@@ -1417,3 +1418,9 @@
     
     <!-- HTML -->
     <div id="chartdiv"></div>
+    <p>{{us_ev_sales_data}}</p>
+    {% for document in us_ev_sales_data %}
+      <p>{{document}}</p>
+    {% endfor %}
+
+    
