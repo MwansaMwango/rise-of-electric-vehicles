@@ -6,7 +6,9 @@ from flask_pymongo import PyMongo
 # import scrape_telsa_data TBC - may not be required since data is already loaded in MongoDB
 
 # Create an instance of our Flask app.
-app = Flask(__name__)
+# Set a folder as static path so that the files inside are reachable for everyone.
+# static_url_path='/static' is default as of 2020
+app = Flask(__name__, static_url_path='/static') 
 
 # Use PyMongo to establish Mongo connection
 mongo = PyMongo(app, uri="mongodb://localhost:27017/electric_vehicles")
@@ -18,12 +20,12 @@ mongo = PyMongo(app, uri="mongodb://localhost:27017/electric_vehicles")
 # Set route - displays landing page
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return redirect("index.html")
 
-# Set route - displays race chart
-@app.route("/race_chart")
-def raceChart():
-    return render_template("race_chart.html")
+# Send static files
+@app.route('/<path:path>')
+def static_file(path):
+    return app.send_static_file(path)
 
 # Get EV Sales data from MongoDB database
 @app.route("/api/us-sales")
@@ -32,7 +34,6 @@ def getUsSales():
   # After you first set of iterations over documents the cursor is used up. It's a read-once container.
   # Convert to list to avoid this.
     us_ev_sales_coll = list(mongo.db.us_ev_sales.find({}))
-    # time.sleep(2)
 
     for year in range(2011,2020):
         vehicle_sales_dict_list = []
@@ -45,12 +46,9 @@ def getUsSales():
                 vehicle_sales_dict_list.append(vehicle_sales_dict)
         all_sales[year] = vehicle_sales_dict_list
 
-    return jsonify(all_sales)
-
-# Display Tesla Sales Data Page
-@app.route("/tesla_sales")
-def page_tesla_sales():
-   return render_template("tesla_sales.html")
+    response = jsonify(all_sales)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
 
 # Get Tesla Sales data from MongoDB database
 @app.route("/api/v1/resources/tesla-sales")
