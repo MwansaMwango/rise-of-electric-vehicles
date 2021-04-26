@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tesla Sales Data</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> 
+</head>
+<body>
+    <div id="bar"></div>
+</body>
+</html>
+<script>
+/* Global Plotly */
+var url =
+  `http://localhost:5000/api/v1/resources/tesla-sales`;
+
+function buildPlot() {
+    d3.json(url).then(function(data) {
+        console.log("Data", data);
+        tesla_sales_data = data;
+        // Create your Bar plot trace.
+        var trace1 = {
+        x: tesla_sales_data.map(doc => doc.Quarter),
+        y: tesla_sales_data.map(doc => doc.Total_Sales),
+        type: "bar",
+        //   orientation: "h",
+        marker: {
+            color: 'rgba(25, 184, 22,0.6)',
+            line: { width: 2 }
+        },
+        };
+        //Create the data array for our plot
+        var data = [trace1];
+        //Define our plot layout
+        var layout = {
+        title: "Quarterly Tesla Sales & Production",
+        width: 1200,
+        height: 600
+        };
+        //Plot the chart to a div tag with id "bar"
+        Plotly.newPlot("bar", data, layout);
+
+  });
+}
+
+buildPlot();
+</script>
