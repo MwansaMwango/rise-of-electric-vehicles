@@ -22,13 +22,13 @@ mongo = PyMongo(app, uri="mongodb://localhost:27017/electric_vehicles")
 def index():
     return redirect("index.html")
 
-# Send static files
+# Send static files based on path location
 @app.route('/<path:path>')
 def static_file(path):
     return app.send_static_file(path)
 
-# Get EV Sales data from MongoDB database
-@app.route("/api/us-sales")
+# Get US EV Sales data from MongoDB database
+@app.route("/api/v1/resources/us-sales")
 def getUsSales():
     all_sales = {}
   # After you first set of iterations over documents the cursor is used up. It's a read-once container.
@@ -38,8 +38,7 @@ def getUsSales():
     for year in range(2011,2020):
         vehicle_sales_dict_list = []
         for document in us_ev_sales_coll: 
-            print("YEAR",year)  
-            if document['Vehicle'] != 'Total':
+            if document['Vehicle'] != 'Total': #exclude the total column
                 vehicle_sales_dict = {}
                 vehicle_sales_dict["vehicle"] = document['Vehicle']
                 vehicle_sales_dict["sales"] = document[str(year)]
