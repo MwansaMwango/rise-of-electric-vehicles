@@ -24,7 +24,7 @@
   am4core.ready(function () {
     // Import data using D3
     var allData;
-    d3.json("http://127.0.0.1:5000/api/us-sales").then((data) => {
+    d3.json("http://localhost:5000/api/v1/resources/us-sales").then((data) => {
       console.log(data);
       allData = data;
 

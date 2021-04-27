@@ -29,7 +29,7 @@ def static_file(path):
 
 # Get US EV Sales data from MongoDB database
 @app.route("/api/v1/resources/us-sales")
-def getUsSales():
+def api_us_sales():
     all_sales = {}
   # After you first set of iterations over documents the cursor is used up. It's a read-once container.
   # Convert to list to avoid this.
