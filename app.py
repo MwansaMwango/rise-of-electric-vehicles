@@ -6,9 +6,8 @@ from flask_pymongo import PyMongo
 # import scrape_telsa_data TBC - may not be required since data is already loaded in MongoDB
 
 # Create an instance of our Flask app.
-# Set a folder as static path so that the files inside are reachable for everyone.
-# static_url_path='/static' is default as of 2020
-app = Flask(__name__, static_url_path='/static') 
+# Static folder has files inside reachable for everyone.
+app = Flask(__name__) 
 
 # Use PyMongo to establish Mongo connection
 mongo = PyMongo(app, uri="mongodb://localhost:27017/electric_vehicles")
@@ -17,18 +16,28 @@ mongo = PyMongo(app, uri="mongodb://localhost:27017/electric_vehicles")
 # Flask Routes
 #################################################
 
+# Send static files based on path location
+# @app.route('/<path:path>')
+# def static_file(path):
+#     return app.send_static_file(path)
+
 # Set route - displays landing page
 @app.route("/")
 def index():
-    return redirect("index.html")
+    return render_template("index.html")
 
-# Send static files based on path location
-@app.route('/<path:path>')
-def static_file(path):
-    return app.send_static_file(path)
+# Set route - displays US EV Model Sales
+@app.route("/race-chart")
+def raceChart():
+    return render_template("race_chart.html")
+
+# Set route - displays Tesla EV Sales
+@app.route("/tesla-sales")
+def teslaSales():
+    return render_template("tesla_sales.html")
 
 # Get US EV Sales data from MongoDB database
-@app.route("/api/v1/resources/us-sales")
+@app.route("/api/v1/resources/us-sales", methods = ['GET'])
 def api_us_sales():
     all_sales = {}
   # After you first set of iterations over documents the cursor is used up. It's a read-once container.
@@ -50,7 +59,7 @@ def api_us_sales():
     return response
 
 # Get Tesla Sales data from MongoDB database
-@app.route("/api/v1/resources/tesla-sales")
+@app.route("/api/v1/resources/tesla-sales", methods = ['GET'])
 def api_tesla_sales():
   # After you first set of iterations over documents the cursor is used up. It's a read-once container.
   # Convert to list to avoid this.
