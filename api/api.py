@@ -66,5 +66,18 @@ def api_id():
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
+# A route to return all charging location values in our catalogue.
+@app.route('/api/v1/resources/ev_charging_station/all', methods=['GET'])
+def api_charging_station_all():
+    docs = []
+    # read records from Mongo, remove the _id field, convert to JSON and allow for CORS
+    for doc in mongo.db.charging_station.find():
+        doc.pop('_id') 
+        docs.append(doc)
+    response = jsonify(docs)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
+
+
 
 app.run()

@@ -34,7 +34,7 @@ function getData() {
   }
   // Call function to update the chart
   // updatePlotly(data);
-  console.log("here");
+  // console.log("here");
 }
 
 function buildPlot(country_id, isInit) {
