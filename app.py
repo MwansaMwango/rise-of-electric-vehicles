@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, jsonify
+from flask import Flask, render_template, redirect, request, jsonify
 import pprint
 import time
 # Import our pymongo library, which lets us connect our Flask app to our Mongo database.
@@ -25,6 +25,16 @@ mongo = PyMongo(app, uri="mongodb://localhost:27017/electric_vehicles")
 @app.route("/")
 def index():
     return render_template("index.html")
+
+# Set route - displays Global Emissions
+@app.route("/global-emissions")
+def globalEmissions():
+    return render_template("electricity_production.html")
+
+# Set route - displays Global Emissions
+@app.route("/global-charge-stations")
+def globalChargeStations():
+    return render_template("ev_charging_stations.html")
 
 # Set route - displays US EV Model Sales
 @app.route("/race-chart")
@@ -74,6 +84,67 @@ def api_tesla_sales():
     response = jsonify(qtr_tesla_sales_dict_list) 
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
+
+# A route to return all of the available country codes in our Mongo catalogue.
+@app.route('/api/v1/resources/countries/all', methods=['GET'])
+def api_countries_all():
+    docs = []
+    # read records from Mongo, remove the _id field, convert to JSON and allow for CORS
+    for doc in mongo.db.country_codes.find():
+        doc.pop('_id') 
+        docs.append(doc)
+    response = jsonify(docs)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
+    
+# A route to return all of the available electricity production values in our Mongo catalogue.
+@app.route('/api/v1/resources/electricity_production_values/all', methods=['GET'])
+def api_pv_all():
+    docs = []
+    # read records from Mongo, remove the _id field, convert to JSON and allow for CORS
+    for doc in mongo.db.electricity_production_values.find():
+        doc.pop('_id') 
+        docs.append(doc)
+    response = jsonify(docs)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
+
+# Return electricity production values for a single country in our Mongo catalogue.
+@app.route('/api/v1/resources/electricity_production_values/country', methods=['GET'])
+def api_electricity_prod_by_country_id():
+    # Check if a Country Code was provided as part of the URL.
+    # If ID is provided, lookup the Country Name from Countries collection
+    # If no ID is provided, display an error in the browser.
+    if 'id' in request.args:
+        country_code = mongo.db.country_codes.find({"Code": str(request.args['id'])})
+        # print(country_code[0]['Name'], file=sys.stderr)  # need to import sys library for debugging
+        id = country_code[0]['Name']       
+    else:
+        return "Error: No id field provided. Please specify a country id."
+
+    # read records from Mongo, remove the _id field, convert to JSON and allow for CORS
+    docs = []
+    for doc in mongo.db.electricity_production_values.find():
+        doc.pop('_id') 
+        if doc['country'] == id:
+            docs.append(doc)
+
+    response = jsonify(docs)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
+
+# A route to return all charging location values in our Mongo catalogue.
+@app.route('/api/v1/resources/ev_charging_station/all', methods=['GET'])
+def api_charging_station_all():
+    docs = []
+    # read records from Mongo, remove the _id field, convert to JSON and allow for CORS
+    for doc in mongo.db.charging_station.find():
+        doc.pop('_id') 
+        docs.append(doc)
+    response = jsonify(docs)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
+
 
 if __name__ == "__main__":
     app.run(debug=True)

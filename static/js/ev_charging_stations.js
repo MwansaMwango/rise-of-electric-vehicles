@@ -1,7 +1,7 @@
 // Creating map object
 var myMap = L.map("map", {
-  center: [40.7, -73.95],
-  zoom: 11
+  center: [30, -5.95],
+  zoom: 3
 });
 
 // Adding tile layer to the map
@@ -14,14 +14,8 @@ L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
   accessToken: API_KEY
 }).addTo(myMap);
 
-// Store API query variables
-var baseURL = "https://data.cityofnewyork.us/resource/fhrw-4uyv.json?";
-var date = "$where=created_date between'2016-01-01T00:00:00' and '2017-01-01T00:00:00'";
-var complaint = "&complaint_type=Rodent";
-var limit = "&$limit=10000";
-
-// Assemble API query URL
-var url = baseURL + date + complaint + limit;
+// Store API URL
+var url = "http://127.0.0.1:5000/api/v1/resources/ev_charging_station/all";
 
 // Grab the data with d3
 d3.json(url, function(response) {
@@ -31,16 +25,17 @@ d3.json(url, function(response) {
 
   // Loop through data
   for (var i = 0; i < response.length; i++) {
+  // for (var i = 0; i < 50; i++) {
 
     // Set the data location property to a variable
-    var location = response[i].location;
-
+    var location = response[i].location_name;
+    console.log(location);
     // Check for location property
     if (location) {
 
       // Add a new marker to the cluster group and bind a pop-up
-      markers.addLayer(L.marker([location.coordinates[1], location.coordinates[0]])
-        .bindPopup(response[i].descriptor));
+      markers.addLayer(L.marker([response[i].Latitude, response[i].Longitude])
+        .bindPopup(response[i].location_name));
     }
 
   }
