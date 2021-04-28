@@ -14,6 +14,10 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootswatch@4.6.0/dist/solar/bootstrap.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
     <link rel="stylesheet" href="static/css/style.css" />
     <style>
       .carousel-inner > .item > img {
@@ -26,7 +30,9 @@
     <!-- Navbar -->
     <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
       <div class="container">
-        <a href="../" class="navbar-brand">Rise of Electric Vehicles</a>
+        <a href="../" class="navbar-brand">
+          <img src="../static/image/logo_icon3.svg" width="50" height="25" class="d-inline-block align-top" alt="" style="filter:invert(100)">
+          Rise of Electric Vehicles</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -51,6 +57,9 @@
               <div class="dropdown-menu" aria-labelledby="themes">
                 <a class="dropdown-item" href="#">Global CO2 Emissions</a>
                 <a class="dropdown-item" href="#"
+                  >Global Electricity Production</a
+                >
+                <a class="dropdown-item" href="#"
                   >Global Charge Station Locations</a
                 >
                 <a class="dropdown-item" href="/race-chart">US EV Sales Data</a>
@@ -60,13 +69,10 @@
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/race-chart">Race Chart</a>
+              <a class="nav-link" href="#"><i class="fab fa-github-square"></i>Data Tables</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Data Tables</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Insights</a>
+              <a class="nav-link" href="https://github.com/MwansaMwango/rise-of-electric-vehicles"><i class="fab fa-github-square"></i> Github</a>
             </li>
           </ul>
         </div>
@@ -91,13 +97,18 @@
     <!-- End of Jumbotron -->
 
     <div class="container">
+      <i class="fa fa-quote-left fa-pull-left"></i>
       <blockquote class="blockquote text-center">
-        <p class="mb-0 display-4">“I like this car”</p>
-        <footer class="blockquote-footer">
-          was the response by the feme-fatale of the female terminator, T-X --
-          <cite title="Source Title">Rise of the Machines(2003)</cite> <br />She
-          was later seen driving off in a petroleum Mercedes Convertible.
-        </footer>
+        <span class="mb-0 display-4">I like this car</span>
+        <i class="fa fa-pull-right fa-quote-right"></i>
+        <small>
+
+          <footer class="blockquote-footer">
+            was the response by the feme-fatale of the female terminator, T-X in
+            <cite title="Source Title">Rise of the Machines(2003)</cite> <br />She
+            was later seen driving off in a <u><b>petroleum</b></u> Mercedes Convertible.
+          </footer>
+        </small>
       </blockquote>
 
       <h2 class="lead">EVs, the long awaited answer to climate change?</h2>
@@ -137,7 +148,7 @@
         costs have been declining dramatically due to innovation in materials
         and manufacturing methods. (Insert graph)
 
-        <i>Wrights Law</i>Pioneered by Theodore Wright in 1936, Wright's Law
+        <i>Wrights Law</i> Pioneered by Theodore Wright in 1936, Wright's Law
         aims to provide a reliable framework for forecasting cost declines as a
         function of cumulative production. Specifically, it states that for
         every cumulative doubling of units produced, costs will fall by a
