@@ -25,14 +25,25 @@
         height: 1500px;
       }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
   </head>
   <body>
     <!-- Navbar -->
     <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
       <div class="container">
         <a href="../" class="navbar-brand">
-          <img src="../static/image/logo_icon3.svg" width="50" height="25" class="d-inline-block align-top" alt="" style="filter:invert(100)">
-          Rise of Electric Vehicles</a>
+          <img
+            src="../static/image/logo_icon3.svg"
+            width="50"
+            height="25"
+            class="d-inline-block align-top"
+            alt=""
+            style="filter: invert(100)"
+          />
+          Rise of Electric Vehicles</a
+        >
         <button
           class="navbar-toggler"
           type="button"
@@ -52,11 +63,16 @@
                 data-toggle="dropdown"
                 href="#"
                 id="themes"
-                ><i class="fas fa-chart-bar"></i> Visualizations <span class="caret"></span
+                ><i class="fas fa-chart-bar"></i> Visualizations
+                <span class="caret"></span
               ></a>
               <div class="dropdown-menu" aria-labelledby="themes">
-                <a class="dropdown-item" href="global-emissions">Global CO2 Emissions</a>
-                <a class="dropdown-item" href="global-charge-stations">Global Charge Station Locations</a>
+                <a class="dropdown-item" href="global-emissions"
+                  >Global CO2 Emissions</a
+                >
+                <a class="dropdown-item" href="global-charge-stations"
+                  >Global Charge Station Locations</a
+                >
                 <a class="dropdown-item" href="/race-chart">US EV Sales Data</a>
                 <a class="dropdown-item" href="/tesla-sales"
                   >Tesla Sales & Production Data</a
@@ -64,10 +80,16 @@
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#"><i class="fas fa-table"></i> Data Tables</a>
+              <a class="nav-link" href="#"
+                ><i class="fas fa-table"></i> Data Tables</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="https://github.com/MwansaMwango/rise-of-electric-vehicles"><i class="fab fa-github-square"></i> Github</a>
+              <a
+                class="nav-link"
+                href="https://github.com/MwansaMwango/rise-of-electric-vehicles"
+                ><i class="fab fa-github-square"></i> Github</a
+              >
             </li>
           </ul>
         </div>
@@ -88,6 +110,12 @@
       <h1 class="text-center align-text-bottom pt-2 display-4">
         <br />The Rise of Electric Vehicles<br />has only just began...
       </h1>
+      <div class="container">
+        <button id="statBtn" role="button" class="btn btn-primary">
+          Click Here for Proof
+        </button>
+        <p id="statText" class="lead text-white text-center"></p>
+      </div>
     </div>
     <!-- End of Jumbotron -->
 
@@ -97,11 +125,11 @@
         <span class="mb-0 display-4">I like this car</span>
         <i class="fa fa-pull-right fa-quote-right"></i>
         <small>
-
           <footer class="blockquote-footer">
             was the response by the feme-fatale of the female terminator, T-X in
-            <cite title="Source Title">Rise of the Machines(2003)</cite> <br />She
-            was later seen driving off in a <u><b>petroleum</b></u> Mercedes Convertible.
+            <cite title="Source Title">Rise of the Machines(2003)</cite>
+            <br />She was later seen driving off in a
+            <u><b>petroleum</b></u> Mercedes Convertible.
           </footer>
         </small>
       </blockquote>
@@ -213,16 +241,42 @@
         </div>
       </footer>
     </div>
-
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
-      crossorigin="anonymous"
-    ></script>
   </body>
+  <script
+    src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+    crossorigin="anonymous"
+  ></script>
+  <script>
+    
+    // Variables to hold data from random stat generator api
+    var randomStat;
+    var url = "http://localhost:5000/api/v1/resources/get-random-stat";
+    var randomStatBtn = d3.select("#statBtn")
+    // Function to handle get random stat button
+    function handleClick(event) {
+      d3.event.preventDefault();
+
+      d3.json(url).then(data => {
+          randomStat = data
+          // Statistic text
+          d3.select("#statText").text(randomStat);
+          // Button Text
+          d3.select("#statBtn").text("Need More Proof?");
+      })
+
+    }
+
+    // Listen for random stat button click event
+    randomStatBtn.on("click", handleClick);
+  </script>
+      <!-- TODO: cant access js from html file -->
+      <!-- <script src="{{
+        url_for('static', filename='js/random_stats.js') }}"></script>  -->
+  
 </html>
