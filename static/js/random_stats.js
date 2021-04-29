@@ -1,20 +1,16 @@
     // Variables to hold data from random stat generator api
-    var randomStat;
-    var url = "http://localhost:5000/api/v1/resources/get-random-stat";
-    var randomStatBtn = d3.select("#statBtn")
+    var url = "api/v1/resources/get-random-stat";
+    var randomStatBtn = d3.select("#statBtn");
     // Function to handle get random stat button
     function handleClick(event) {
       d3.event.preventDefault();
-
+      console.log("clicked NEW");
       d3.json(url).then(data => {
-          randomStat = data
           // Update Statistic text
-          d3.select("#statText").text(randomStat);
+          d3.select("#statText").text(data);
           // Update Button Text
-          d3.select("#statBtn").text("Need More Facts?");
+          d3.select("#statBtn").text("Need More Facts?");   
       })
-
     }
-
     // Listen for random stat button click event
     randomStatBtn.on("click", handleClick);

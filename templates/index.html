@@ -27,7 +27,6 @@
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-
   </head>
   <body>
     <!-- Navbar -->
@@ -153,22 +152,65 @@
             </p>
           </div>
           <div class="row">
-            <div class="col-md-6">
-              <p class="text-justify">
-                In the recent years, X% of carbon emissions inversely pushed the
-                need for greener solutions. But, are EVs the answer? As of
-                ??(date), ~2% of cars in the world are electric with Europe and
-                China at the top of the list in market share.
-                <br />(Insert world ev market share by country) <br />
-                With the push for greener and cleaner solutions, major car
-                manufacturers like Tesla, Volkswagen, Kia and Nissan, have all
-                made the hurried dash for the green race.
-              </p>
+            <div id="market-share-plot" class="mr-3">
+              EV Market Share of All Car Sales by Country
             </div>
-            <div class="col-md-6">Chart / Image</div>
+
+            <div>
+              <fieldset class="form-group">
+                <legend><i class="fas fa-filter"></i>Data Filters</legend>
+                <fieldset class="form-group">
+                   <div class="form-check">
+                    <label class="form-check-label">
+                      <input
+                        type="radio"
+                        class="form-check-input"
+                        name="optionsRadios"
+                        id="optionsRadios1"
+                        value="top5"
+                      />
+                      Top 5
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input
+                        type="radio"
+                        class="form-check-input"
+                        name="optionsRadios"
+                        id="optionsRadios2"
+                        value="bottom5"
+                      />
+                      Bottom 5
+                    </label>
+                  </div>
+                </fieldset>
+                <fieldset>
+                  
+                  <div class="form-group">
+                    <select id="selCountry-marketShare" class="custom-select">
+                      <option selected="">Select Country(All)</option>
+                    </select>
+                  </div>
+                </fieldset>
+              </fieldset>
+            </div>
           </div>
         </div>
         <hr />
+        <div class="row">
+          <p class="text-justify">
+            In the recent years, X% of carbon emissions inversely pushed the
+            need for greener solutions. But, are EVs the answer? As of
+            September, 2019, only 0.48% of the 1.5 billion vehicles in the world
+            are electric with Europe and China at the top of the list in market
+            share.
+            <br />(Insert world ev market share by country) <br />
+            With the push for greener and cleaner solutions, major car
+            manufacturers like Tesla, BYD, Hyundai, Volkswagen and Nissan, have
+            all made the hurried dash for the green race.
+          </p>
+        </div>
         <div class="row">
           <h2 class="lead">Barriers to EV adoption</h2>
           <p>
@@ -176,18 +218,18 @@
             about the “Green Vehicle” market. Although most of these concerns
             can now be busted myths (as we will discovered), we will still
             highlight them below:
-              <br /><strong>High Price</strong><br />
-              By far, historically, the biggest barrier to entry into the EV
-              market has been the high cost. Because of its novelty, an EV-product
-              such as the Leaf would landed a hefty $60,000 price tag in 2012.
-              With that price tag, your typical consumer would be assuming it
-              comes with the luxury of either a 4-door sedan, leather interiors or
-              a 5 door SUV, with a horse power of a Ferrari.
-              <br /><strong>What did we learn?</strong><br />
-              About 60-70%?? of EV cost lies in the cost of its batteries. Battery
-              costs have been declining dramatically due to innovation in
-              materials and manufacturing methods. (Insert graph)
-              
+            <br /><strong>High Price</strong><br />
+            By far, historically, the biggest barrier to entry into the EV
+            market has been the high cost. Because of its novelty, an EV-product
+            such as the Leaf would landed a hefty $60,000 price tag in 2012.
+            With that price tag, your typical consumer would be assuming it
+            comes with the luxury of either a 4-door sedan, leather interiors or
+            a 5 door SUV, with a horse power of a Ferrari.
+            <br /><strong>What did we learn?</strong><br />
+            About 60-70%?? of EV cost lies in the cost of its batteries. Battery
+            costs have been declining dramatically due to innovation in
+            materials and manufacturing methods. (Insert graph)
+
             <i>Wrights Law</i> Pioneered by Theodore Wright in 1936, Wright's
             Law aims to provide a reliable framework for forecasting cost
             declines as a function of cumulative production. Specifically, it
@@ -269,19 +311,18 @@
       </footer>
     </div>
 
-  <script src="{{
-    url_for('static', filename='js/random_stats.js') }}"></script> 
-  <script
-    src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"
-  ></script>
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
-    crossorigin="anonymous"
-  ></script>
-  
-</body>
-
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+      crossorigin="anonymous"
+    ></script>
+    <script src="{{ url_for('static', filename='js/random_stats.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/market_share.js') }}"></script>
+   
+  </body>
 </html>
