@@ -4,9 +4,29 @@ var source = ['Oil, gas and coal', 'Renewable sources, excluding hydroelectric',
 // Display the default plot
 function init() {
   
+  addCountryDropDown ();
   buildPlot("AU", true);
 
   // Plotly.newPlot("pie", data, layout);
+}
+
+function addCountryDropDown () {
+ 
+  var url =
+  `http://localhost:5000/api/v1/resources/countries/all`;
+
+  d3.json(url).then(function(data) {
+    
+    // add the options to the button
+    d3.select("#selDataset")
+    .selectAll('myOptions')
+    .data(d3.entries(data).map(function(d){return d}))
+    .enter()
+    .append('option')
+    .text(function (d) { return d.value.Name; }) // text showed in the menu
+    .attr("value", function (d) { return d.value.Code; }) // corresponding value returned by the button
+  });
+
 }
 
 // On change to the DOM, call getData()
@@ -18,8 +38,9 @@ function getData() {
   // Assign the value of the dropdown menu option to a variable
   var dataset = dropdownMenu.property("value");
   // Initialize an empty array for the country's data
-  var data = [];
-
+  //var data = [];
+  console.log(dataset);
+  buildPlot(dataset, true);
   if (dataset == 'us') {
       // data = us;
       buildPlot("US", false);
@@ -130,7 +151,9 @@ function buildPlot(country_id, isInit) {
           autorange: true,
           type: "linear",
           title: 'Percentage'
-        }
+        },
+        plot_bgcolor:"black",
+        paper_bgcolor:"#FFF3"
       };
 
       Plotly.newPlot("plot", datatr, layout);

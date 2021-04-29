@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <title>EV Charging Stations</title>
 
+    <!-- Website Theme -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootswatch@4.6.0/dist/solar/bootstrap.min.css"
+    />
+
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
     integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
@@ -19,12 +25,34 @@
   </head>
   <body>
 
+    <!-- Navbar -->
+    <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+      <div class="container">
+        <a href="../" class="navbar-brand">
+          <img
+            src="../static/image/logo_icon3.svg"
+            width="50"
+            height="25"
+            class="d-inline-block align-top"
+            alt=""
+            style="filter: invert(100)"
+          />
+          Rise of Electric Vehicles</a
+        >
+      </div>
+    </div>
+    <!-- End of Navbar -->
+
     <div id="map"></div>
 
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
     integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
     crossorigin=""></script>
+
+    <!-- Icons -->
+    <script src="../static/js/leaflet.extra-markers.min.js"></script>
+
     <!-- d3 JS -->
     <script src="https://d3js.org/d3.v4.min.js"></script>
 
