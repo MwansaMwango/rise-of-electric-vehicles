@@ -8,11 +8,10 @@
 
       d3.json(url).then(data => {
           randomStat = data
-          // Statistic text
+          // Update Statistic text
           d3.select("#statText").text(randomStat);
-          // Button Text
-          d3.select("#statBtn").text("Need More?");
-          console.log("Clicked");
+          // Update Button Text
+          d3.select("#statBtn").text("Need More Facts?");
       })
 
     }

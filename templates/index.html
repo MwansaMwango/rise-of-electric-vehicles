@@ -27,6 +27,7 @@
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
   </head>
   <body>
     <!-- Navbar -->
@@ -267,7 +268,9 @@
         </div>
       </footer>
     </div>
-  </body>
+
+  <script src="{{
+    url_for('static', filename='js/random_stats.js') }}"></script> 
   <script
     src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -278,28 +281,7 @@
     integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
     crossorigin="anonymous"
   ></script>
-  <script>
-    // Variables to hold data from random stat generator api
-    var randomStat;
-    var url = "http://localhost:5000/api/v1/resources/get-random-stat";
-    var randomStatBtn = d3.select("#statBtn");
-    // Function to handle get random stat button
-    function handleClick(event) {
-      d3.event.preventDefault();
+  
+</body>
 
-      d3.json(url).then((data) => {
-        randomStat = data;
-        // Statistic text
-        d3.select("#statText").text(randomStat);
-        // Button Text
-        d3.select("#statBtn").text("Need More Proof?");
-      });
-    }
-
-    // Listen for random stat button click event
-    randomStatBtn.on("click", handleClick);
-  </script>
-  <!-- TODO: cant access js from html file -->
-  <!-- <script src="{{
-        url_for('static', filename='js/random_stats.js') }}"></script>  -->
 </html>
