@@ -5,7 +5,10 @@ var source = ['Oil, gas and coal', 'Renewable sources, excluding hydroelectric',
 function init() {
   
   addCountryDropDown ();
-  buildPlot("AU", true);
+  // document.getElementById("selDataset2").style.display = "none";
+  buildPlot("AU", true, 1);
+  // document.getElementById("extraPlot").style.display = "none";
+  buildPlot("NO", true, 2);
 
   // Plotly.newPlot("pie", data, layout);
 }
@@ -18,7 +21,7 @@ function addCountryDropDown () {
 
   d3.json(url).then(function(data) {
     
-    // add the options to the button
+    // add the entries to the first dropdown
     d3.select("#selDataset")
     .selectAll('myOptions')
     .data(d3.entries(data).map(function(d){return d}))
@@ -27,49 +30,63 @@ function addCountryDropDown () {
     .text(function (d) { return d.value.Name; }) // text showed in the menu
     .attr("value", function (d) { return d.value.Code; }) // corresponding value returned by the button
     .property("selected", function(d){ return d.value.Name === "Australia"; })
+
+    // add the entries to the second dropdown
+    d3.select("#selDataset2")
+    .selectAll('myOptions')
+    .data(d3.entries(data).map(function(d){return d}))
+    .enter()
+    .append('option')
+    .text(function (d) { return d.value.Name; }) // text showed in the menu
+    .attr("value", function (d) { return d.value.Code; }) // corresponding value returned by the button
+    .property("selected", function(d){ return d.value.Name === "Norway"; })
   });
 
 
 }
 
-// On change to the DOM, call getData()
+// On change to the DOM, call functions
+// 1st Country Dropdown
 d3.selectAll("#selDataset").on("change", getData);
-
+// Compare checkbox
 d3.selectAll("#compareCountry").on("change", compareData);
+// 2nd Country Dropdown
+d3.selectAll("#selDataset2").on("change", getData2);
 
-// Function called by DOM changes
+// Functions called by DOM changes
 function getData() {
   var dropdownMenu = d3.select("#selDataset");
   // Assign the value of the dropdown menu option to a variable
   var dataset = dropdownMenu.property("value");
-  console.log(dataset);
-  buildPlot(dataset, true);
-  if (dataset == 'us') {
-      // data = us;
-      buildPlot("US", false);
-  }
-  else if (dataset == 'uk') {
-      // data = uk;
-      buildPlot("GB", true);
-  }
-  else if (dataset == 'canada') {
-      // data = canada;
-      buildPlot("CA", true);
-  }
+  // console.log(dataset);
+  buildPlot(dataset, true, 1);
 }
 
 function compareData() {
   var countryCompare = document.getElementById("compareCountry").checked;
-  console.log(countryCompare);
+  // console.log(countryCompare);
   if (countryCompare) {
     document.getElementById("selDataset2").style.display = "block";
+    document.getElementById("extraPlot").style.display = "block";
+    buildPlot(dataset, true, 2);
+
   }
   else {
       document.getElementById("selDataset2").style.display = "none";
+      document.getElementById("extraPlot").style.display = "none";
   }
 }
 
-function buildPlot(country_id, isInit) {
+function getData2() {
+  var dropdownMenu = d3.select("#selDataset2");
+  // Assign the value of the dropdown menu option to a variable
+  var dataset = dropdownMenu.property("value");
+  // console.log(dataset);
+  buildPlot(dataset, true, 2);
+}
+
+// Function to build the plots
+function buildPlot(country_id, isInit, plotId) {
   
   var year1 = []; var year2 = []; var year3 = []; var year4 = []; var year5 = [];
   var percentages1 = []; percentages2 = []; percentages3 = []; percentages4 = []; percentages5 = [];
@@ -189,8 +206,9 @@ function buildPlot(country_id, isInit) {
         plot_bgcolor:"#fefcf7",
         paper_bgcolor:"#dce1e2"
       };
-
-      Plotly.newPlot("plot", datatr, layout);
+      if (plotId == 1) {Plotly.newPlot("plot", datatr, layout);}
+      else {Plotly.newPlot("plot2", datatr, layout);}
+      
     }
     
     else { 
@@ -227,9 +245,16 @@ function buildPlot(country_id, isInit) {
       };
 
       // Plotly.relayout("plot", layout_update);
-      Plotly.update("plot", [year1], layout_update, 0)
-      Plotly.restyle("plot", "x", [year1]);
-      Plotly.restyle("plot", "y", [percentages1]);
+      if (plotId == 1) {
+        Plotly.update("plot", [year1], layout_update, 0)
+        Plotly.restyle("plot", "x", [year1]);
+        Plotly.restyle("plot", "y", [percentages1]);
+      }
+      else {
+        Plotly.update("plot2", [year1], layout_update, 0)
+        Plotly.restyle("plot2", "x", [year1]);
+        Plotly.restyle("plot2", "y", [percentages1]);        
+      }
     }
 
   });

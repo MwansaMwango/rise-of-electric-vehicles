@@ -59,10 +59,13 @@ d3.json(url, function(response) {
     
     // Check for location property
     if (location) {
-
+      var comments = "";
+      if (response[i].user_comments !== null){comments = response[i].user_comments;}
       // Add a new marker to the cluster group and bind a pop-up
       markers.addLayer(L.marker([response[i].Latitude, response[i].Longitude])
-         .bindPopup(response[i].location_name));
+         .bindPopup(`Name: ${response[i].location_name} <br>
+        Charging Points: ${response[i].charging_points} <br>
+        Comments: ${comments}`));
 
       // Create a new marker with the appropriate icon and coordinates
       var newMarker = L.marker([response[i].Latitude, response[i].Longitude], {
