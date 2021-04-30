@@ -1,6 +1,6 @@
 # Rise of Electric Vehicles
 ## Mwansa Mwango and Jim Bentley
-![alt text](Images/project_cover.jpg "Rise of the EV's!!")
+![alt text](static/image/project_cover.jpg "Rise of the EV's!!")
 ### Introduction
 From carts to steam and hydrocarbon vehicles, mankind is now entering a new phase of transportation.  Electric Vehicles are set to takeover this decade as the primary type of vehicle on our roads. 
 
@@ -18,5 +18,5 @@ Our project will look at factors to why EV adoption is increasing.  These factor
    * Race chart graph on the rise of EV's using the raceplotly library (a library not used in class).
    * Details page showing a table of data that the visualisation pages are based on.
 ### Solution Design
-![alt_text](Images/solution_design.png "Solution Design")
+![alt_text](static/image/solution_design.png "Solution Design")
 
