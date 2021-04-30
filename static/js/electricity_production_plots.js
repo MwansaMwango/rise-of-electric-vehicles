@@ -1,3 +1,6 @@
+
+// Electricity Production Plots
+
 /* global Plotly */
 var source = ['Oil, gas and coal', 'Renewable sources, excluding hydroelectric', 'Nuclear', 'Natural Gas', 'Hydroelectric'];
 
@@ -10,7 +13,6 @@ function init() {
   // document.getElementById("extraPlot").style.display = "none";
   buildPlot("NO", true, 2);
 
-  // Plotly.newPlot("pie", data, layout);
 }
 
 // Populate the country dropdown and default to Australia
