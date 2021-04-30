@@ -143,17 +143,40 @@ function buildPlot(country_id, isInit) {
       var datatr = [trace1, trace2, trace3, trace4, trace5];
 
       var layout = {
-        title: `${country} - Electricity Generation by Source (% of total)`,
+        title: {
+          text:`${country} - Electricity Generation by Source (% of total)`,
+          font: {
+            family: 'Courier New, monospace',
+            size: 24,
+            color: 'black',
+            fontWeight: 'bold'
+          }
+        },
         xaxis: {
-          title: 'Year'
+          title: {
+            text: 'Year',
+            font: {
+              family: 'Courier New, monospace',
+              size: 18,
+              color: 'black',
+              fontWeight: 'bold'
+            }
+          }
         },
+
         yaxis: {
-          autorange: true,
-          type: "linear",
-          title: 'Percentage'
+          title: {
+            text: 'Percentage',
+            font: {
+              family: 'Courier New, monospace',
+              size: 18,
+              color: 'black',
+              fontWeight: 'bold'
+            }
+          }
         },
-        plot_bgcolor:"black",
-        paper_bgcolor:"#FFF3"
+        plot_bgcolor:"#fefcf7",
+        paper_bgcolor:"#dce1e2"
       };
 
       Plotly.newPlot("plot", datatr, layout);
