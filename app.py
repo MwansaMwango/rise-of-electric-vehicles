@@ -23,12 +23,12 @@ mongo = PyMongo(app, uri="mongodb://localhost:27017/electric_vehicles")
 def index():
     return render_template("index.html")
 
-# Set route - displays Global Emissions
+# Set route - displays Global electricity production
 @app.route("/global-emissions")
 def globalEmissions():
     return render_template("electricity_production.html")
 
-# Set route - displays Global Emissions
+# Set route - displays Global charge station
 @app.route("/global-charge-stations")
 def globalChargeStations():
     return render_template("ev_charging_stations.html")

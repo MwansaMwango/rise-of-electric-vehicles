@@ -4,7 +4,6 @@ var datasetList = [];
 var top5 = [];
 var bottom5 = [];
 
-
 // Get market share data slice relevant data
 function init() {
   var url = "api/v1/resources/market-share";
@@ -36,7 +35,7 @@ function init() {
 // Function called by DOM changes
 function handleChange(event) {
   d3.event.preventDefault();
-  
+
   var newDatasetList = [];
 
   var eventTarget = d3.event.target;
@@ -68,7 +67,6 @@ function handleChange(event) {
     });
   }
 
-
   console.log("newDatasetList", newDatasetList);
   // Call function to update the chart
   buildPlot(newDatasetList);
@@ -86,22 +84,60 @@ function buildPlot(datasetList) {
     });
   }
 
+  // var layout = {
+  //   title: `EV Market Share of All New Car Sales`,
+  //   xaxis: {
+  //     title: "Year",
+  //   },
+  //   yaxis: {
+  //     autorange: true,
+  //     type: "linear",
+  //     title: "Percentage %",
+  //   },
+  //   width: "70vw",
+  //   height: "60vh",
+  //   paper_bgcolor: "smoker",
+  //   font: { color: "blue", family: "Arial" },
+  // };
+
   var layout = {
-    title: `EV Market Share of All New Car Sales`,
-    xaxis: {
-      title: "Year",
+    title: {
+      text: `EV Market Share of All New Car Sales`,
+      font: {
+        family: "Courier New, monospace",
+        size: 24,
+        color: "black",
+        fontWeight: "bold",
+      },
     },
+    xaxis: {
+      title: {
+        text: "Year",
+        font: {
+          family: "Courier New, monospace",
+          size: 18,
+          color: "black",
+          fontWeight: "bold",
+        },
+      },
+    },
+
     yaxis: {
-      autorange: true,
-      type: "linear",
-      title: "Percentage %",
+      title: {
+        text: "Percentage %",
+        font: {
+          family: "Courier New, monospace",
+          size: 18,
+          color: "black",
+          fontWeight: "bold",
+        },
+      },
     },
     width: "70vw",
     height: "60vh",
-    paper_bgcolor: "smoker",
-    font: { color: "blue", family: "Arial" },
+    plot_bgcolor: "#fefcf7",
+    paper_bgcolor: "#dce1e2",
   };
-
   Plotly.newPlot("market-share-plot", datatr, layout);
 }
 // On dropdown change to the DOM, call handleChange

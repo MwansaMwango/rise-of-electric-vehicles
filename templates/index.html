@@ -67,15 +67,13 @@
               ></a>
               <div class="dropdown-menu" aria-labelledby="themes">
                 <a class="dropdown-item" href="global-emissions"
-                  >Global CO2 Emissions</a
+                  >Global Electricty Production</a
                 >
                 <a class="dropdown-item" href="global-charge-stations"
                   >Global Charge Station Locations</a
                 >
-                <a class="dropdown-item" href="/race-chart">US EV Sales Data</a>
-                <a class="dropdown-item" href="/tesla-sales"
-                  >Tesla Sales & Production Data</a
-                >
+                <a class="dropdown-item" href="/race-chart">US EV Sales</a>
+                <a class="dropdown-item" href="/tesla-sales">Tesla Sales</a>
               </div>
             </li>
             <li class="nav-item">
@@ -113,7 +111,7 @@
         <button id="statBtn" role="button" class="btn btn-primary">
           Click Here for Proof
         </button>
-        <h5 id="statText" class="text-white text-center pt-2"></h5>
+        <h4 id="statText" class="text-white text-center pt-2"></h4>
       </div>
     </div>
     <!-- End of Jumbotron -->
@@ -138,86 +136,86 @@
       <hr />
       <!-- Intro -->
       <div class="row">
-        <h2 class="lead">
-          Are EVs the answer to carbon emission reduction challenge?
+        <h2>
+          Current Situation - Only 0.48% of the 1.5 billion vehicles are
+          electric!
         </h2>
         <p class="text-justify">
-          It is 2021 and yes, the Rise of Electric Vehicles is here. With carbon
-          emissions reduction presure, innovation in car manufacturing and
-          battery technology, it was only a matter of time. EV adoption is bound
-          to happen and we investigate what will aspects the will matter to make
-          this a reality. The world has began to shift to electric vehicles.
+          It is 2021 and yes, the Rise of Electric Vehicles is here. Howevwe, as
+          of September, 2019, only 0.48% of the 1.5 billion vehicles in the
+          world are electric with Europe taking the lead in embracing EVs. This
+          is quickly changing with carbon emissions reduction presure,
+          innovation in car manufacturing and battery technology.
+        </p>
+        <p class="text-justify">
+          EV adoption is bound to happen and we investigate what will aspects
+          the will matter to make this a reality. The world has began to shift
+          to electric vehicles.
         </p>
       </div>
       <!-- End of into -->
-
-      <!-- EV Market Share vs. All Cars Section -->
-      <div class="row">
-        <div id="market-share-plot" class="mr-3">
-          OK, So what's the percentage of electric cars sold vs. conventional
-          cars?
-        </div>
-        <p class="text-justify">
-          As of September, 2019, only 0.48% of the 1.5 billion vehicles in the
-          world are electric with Europe taking the lead in embracing EVs.
-        </p>
-        <div>
-          <fieldset class="form-group">
-            <legend><i class="fas fa-filter"></i>Data Filters</legend>
-            <fieldset class="form-group">
-              <div class="form-check">
-                <label class="form-check-label">
-                  <input
-                    type="radio"
-                    class="form-check-input"
-                    name="optionsRadios"
-                    id="optionsRadios1"
-                    value="top5"
-                  />
-                  Top 5
-                </label>
-              </div>
-              <div class="form-check">
-                <label class="form-check-label">
-                  <input
-                    type="radio"
-                    class="form-check-input"
-                    name="optionsRadios"
-                    id="optionsRadios2"
-                    value="bottom5"
-                  />
-                  Bottom 5
-                </label>
-              </div>
-            </fieldset>
-            <fieldset>
-              <div class="form-group">
-                <select id="selCountry-marketShare" class="custom-select">
-                  <option selected="">Select Country(All)</option>
-                </select>
-              </div>
-            </fieldset>
-          </fieldset>
-        </div>
-      </div>
-
       <hr />
-      <!-- EV Market Share Insight -->
-      <div class="row">
+      <!-- EV Market Share vs. All Cars Section -->
+      <div class="row text-justify">
+        <h2>
+          Europe dominates when it comes to EV market share of all new car sales
+        </h2>
+        <!-- EV Market Share Insight -->
+
         <p class="text-justify">
-          In 2019, Europe ovetook China with the proportion of electric vehicles
-          sold. With the push for greener and cleaner solutions, major car
-          manufacturers like Tesla, BYD, Hyundai, Volkswagen and Nissan, have
-          all made the hurried dash for the green race.
+          In 2019, Europe overtook China with the proportion of electric
+          vehicles sold. With the push for greener and cleaner solutions, major
+          car manufacturers like Tesla, BYD, Hyundai, Volkswagen and Nissan,
+          have all made the hurried dash for the green race.
         </p>
+
+        <span id="market-share-plot" class="mr-5"></span>
+        <fieldset class="form-group">
+          <legend><i class="fas fa-filter"></i>Data Filters</legend>
+          <fieldset class="form-group">
+            <div class="form-check">
+              <label class="form-check-label">
+                <input
+                  type="radio"
+                  class="form-check-input"
+                  name="optionsRadios"
+                  id="optionsRadios1"
+                  value="top5"
+                />
+                Top 5
+              </label>
+            </div>
+            <div class="form-check">
+              <label class="form-check-label">
+                <input
+                  type="radio"
+                  class="form-check-input"
+                  name="optionsRadios"
+                  id="optionsRadios2"
+                  value="bottom5"
+                />
+                Bottom 5
+              </label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <div class="form-group">
+              <select id="selCountry-marketShare" class="custom-select">
+                <option selected="">Select Country(All)</option>
+              </select>
+            </div>
+          </fieldset>
+        </fieldset>
       </div>
+      <hr />
+      <!-- Barriers to adoption Seciton -->
       <div class="row">
-        <h2 class="lead">But why the low EV market share of only 0.48%?</h2>
-        <p>
+        <h2>But why the low EV market share of only 0.48%?</h2>
+        <p class="text-justify">
           Its stems to the big question - Why would you buy an EV anyway right?
-          Consumers still have concerns about the “Green Vehicle” market.
-          Although most of these concerns can now be busted myths (as we
-          learned), we will still highlight them below:
+          Consumers and manufactueres still have concerns about the “Green
+          Vehicle” market. We investigated the extent of these conerns and
+          barriers to entry.
         </p>
 
         <div class="row">
@@ -225,11 +223,11 @@
             <img
               src="../static/image/fuel-price.jpg"
               alt=""
-              class="img-fluid"
+              class="img-fluid img-thumbnail"
             />
           </div>
           <div class="col-md-9 text-justify">
-            <strong>High Price</strong>
+            <h3>High Price</h3>
             <p>
               By far, historically, the biggest barrier to entry into the EV
               market has been the high cost. Because of its novelty, an
@@ -242,6 +240,7 @@
           </div>
         </div>
         <hr />
+
         <div class="row">
           <div class="col-md-3">
             <img
@@ -256,18 +255,25 @@
             />
           </div>
           <div class="col-md-9 text-justify">
-            <strong>What did we learn?</strong>
+            <h3>What did we learn?</h3>
+
             <p>
-              About 60-70%?? of EV cost lies in the cost of its batteries.
-              Battery costs have been declining dramatically due to innovation
-              in materials and manufacturing methods.
+              <b>
+                Due to innovation in materials and manufacturing methods,
+                Battery costs have been declining dramatically.
+              </b>
+              About 21% of lithium battery EV cost lies in the battery pack. As
+              of December 2019, the cost of electric-vehicle batteries has
+              fallen 87% since 2010.
             </p>
             <p>
-              <i>Wrights Law</i> Pioneered by Theodore Wright in 1936, Wright's
+              <b>Wrights Law</b> Pioneered by Theodore Wright in 1936, Wright's
               Law aims to provide a reliable framework for forecasting cost
               declines as a function of cumulative production. Specifically, it
               states that for every cumulative doubling of units produced, costs
-              will fall by a constant percentage.
+              will fall by a constant percentage. This decline in cost is
+              evident in the evolution from first cars, computers or mobile
+              phones.
             </p>
           </div>
         </div>
@@ -277,18 +283,24 @@
             <img
               src="../static/image/empty_tank.png"
               alt=""
-              class="img-fluid"
+              class="img-fluid img-thumbnail"
             />
           </div>
 
           <div class="col-md-9 text-justify">
-            <strong>Range Anxiety</strong>
+            <h3>Range Anxiety</h3>
             <p>
               Consumers fear that they will run out of 'juice' in transit and
               have to charge their export const if they can find a charging
               station nearby. Whats worse if it takes long to charge worse have
               to recharge frequently. Which highlights the next obvious barrier
               to adoption.
+            </p>
+            <h3>What did we learn?</h3>
+            <p>
+              Today, the average battery range for EVs is ranges from 350-450km,
+              while Tesla has the Model 3 Long Range up to 657km. This is
+              comparable to an average sized conventional car's full tank range.
             </p>
           </div>
         </div>
@@ -298,21 +310,23 @@
             <img
               src="../static/image/tesla-charging.jpg"
               alt=""
-              class="img-fluid"
+              class="img-fluid img-thumbnail"
             />
           </div>
           <div class="col-md-9 text-justify">
-            <strong>Charge Station Availability</strong>
+            <h3>Charge Station Availability</h3>
             <p>
-              Consumers, including Australian's are held back by not having
+              Consumers, including Australian's, are held back by not having
               sufficient charging facilities. Definitely, wouldn't want to ran
-              out of jiuce in the middle of Australian outback.
+              out of 'juice' in the middle of Australian outback.
             </p>
-            <strong>What did we learn?</strong><br />
+            <h3>What did we learn?</h3>
+            <br />
             <p>
-              There has been mass installation of charging infrastructure around
-              the world. (Blurb about current status of Australian charging
-              stations) (Insert price chart here)
+              There are a lot more charging stations in Europe, including the
+              number of charging points per station. The US is catching up, but
+              Australia is way behind. It is difficult to get information on
+              China.
             </p>
           </div>
         </div>
@@ -323,84 +337,88 @@
             <img
               src="../static/image/power-grid.jpg"
               alt=""
-              class="img-fluid"
+              class="img-fluid img-thumbnail"
             />
           </div>
           <div class="col-md-9 text-justify">
-            <strong>Electricity Generation Source</strong>
+            <h3>Electricity Generation Source</h3>
             <p>
               Well, our electricity is monopolised by the fossil fuel industry.
               today. While there are indeed alternatives such as solar, wind and
-              thermal platforms, X% of fossil fuel production is still being
-              channelled back into our grid and therefore, is Man’s energy
-              source for switching on the lights at night. It’s a sad paradox,
-              but a true one at best.
+              thermal platforms. Significant portions of fossil fuel production
+              are still being channelled back into our grid and therefore, is
+              Man’s energy source for switching on the lights at night. It’s a
+              sad paradox, but a true one at best.
             </p>
-
-            <br />
-            <strong>What did we learn?</strong><br />
+            <h3>What did we learn?</h3>
             <p>
-              (Insert blurb and link to world electricity production data chart)
+              Countries who have adopted renewable source are more likely to
+              also have more EV's on the road.
             </p>
           </div>
         </div>
 
         <hr />
-        <div class="row">
-          <h2 class="lead">Breaking the Barriers</h2>
-       
+        <div class="row text-justify">
+          <h2>Tesla - Breaking the Barriers!</h2>
+          <p>
             Unbeknownst to many, Elon Musk’s Telsa was already been climbing up
             the EV ladder overtaking legacy car manufacters to become the most
-            valuable motor vehicle company. 
-            <div class="justify-content-center">
-              <img
-              src="../static/image/tesla-car.jpg"
-              style="height:11rem"
+            valuable motor vehicle company.
+          </p>
+          <div class="justify-content-center">
+            <img
+              src="../static/image/tesla-gigafactory.jpg"
+              style="height: 10.5rem"
               alt=""
               class="img-fluid"
-              />
-              <img
+            />
+            <img
               src="../static/image/tesla-battery.jpg"
               alt=""
               class="img-fluid"
-              />
-            </div>
-            <p>
-            Looking at the data available from
-            the US alone.
+            />
+          </div>
+          <p>
+            Looking at the data available from the US alone.
             <a href="/race-chart">
               Tesla has come from behind to dominate the EV market
             </a>
-            (Insert race chart) It seemed that Telsa and its team understood the
-            promise <a href="/tesla-sales">these cars</a> would make for
-            generations to come. With their giga-factories, innovations made to
-            its batteries and car design created the benchmark for such types of
-            vehicles supporting our road network. (Insert Tesla sales chart)
+            It seemed that Telsa and its team understood the promise
+            <a href="/tesla-sales">these cars</a> would make for generations to
+            come. With their giga-factories, innovations made to its batteries
+            and car design created the benchmark for such types of vehicles
+            supporting our road network.
           </p>
         </div>
-        <hr />
-        <div class="row">
-          <h2 class="lead">What does the future hold?</h2>
+        <hr class="text-white" />
+        <div class="row text-justify">
+          <h2>What does the future hold?</h2>
           <p>
-            With manufacturing and baterry innovation, government support,
+            With manufacturing and battery innovation, government support,
             competition and climate change, the rise of EVs has already began
-            and set to explode. By 2025, Tesla strives to uphold its promise of
-            an affordable eletric car.
+            and set to explode. BloombergNEF expects that these cells could be
+            manufactured at 40% of the cost of current lithium-ion batteries,
+            when produced at scale. By 2025, Tesla strives to uphold its promise
+            of an affordable eletric car.
           </p>
-          <div class="rounded mx-auto d-block ">
+          <div>
             <img
-            src="../static/image/global.jpg"
-            style="height:400"
-            alt=""
-            class="img-fluid"
+              src="../static/image/global.jpg"
+              style="height: 400"
+              alt=""
+              class="img-fluid img-thumbnail"
             />
           </div>
         </div>
         <p>
-          <small>Sources:</small>
-          <small>Source of data1</small>
-          <small>Source of data2</small>
-          <small>Source of data3</small>
+          <small
+            >Sources:
+            <a
+              href="https://github.com/MwansaMwango/rise-of-electric-vehicles/tree/main/data"
+              >Github Project Data Files</a
+            >
+          </small>
         </p>
       </div>
       <!-- Footer -->
