@@ -52,14 +52,16 @@
     </div>
     <!-- End of Navbar -->
 
-    <div class="container">
+    <div class="container-fluid px-5">
       <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-1"></div>  
+        <div class="col-sm-11">
           <h2>Electricity Production By Country</h2>
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-10">
+        <div class="col-sm-1"></div>  
+        <div class="col-sm-8">
           <div id="plot"></div>
         </div>
         <div class="col-sm-2">
@@ -69,12 +71,14 @@
             <br>            
             <div class="form-check">
               <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" value="false" checked="">
+                <input class="form-check-input" id= "compareCountry" type="checkbox" value="false">
                 Compare to another
               </label>
             </div>
+            <select class="form-control" id="selDataset2" onchange="getData2(this.value)"></select>
           </div>
-        </div>       
+        </div> 
+        <div class="col-sm-1"></div>      
       </div>
     </div>
     <script src="static/js/electricity_production_plots.js"></script>

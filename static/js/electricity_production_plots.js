@@ -10,10 +10,11 @@ function init() {
   // Plotly.newPlot("pie", data, layout);
 }
 
+// Populate the country dropdown and default to Australia
 function addCountryDropDown () {
  
   var url =
-  `http://localhost:5000/api/v1/resources/countries/all`;
+  `api/v1/resources/countries/all`;
 
   d3.json(url).then(function(data) {
     
@@ -25,20 +26,22 @@ function addCountryDropDown () {
     .append('option')
     .text(function (d) { return d.value.Name; }) // text showed in the menu
     .attr("value", function (d) { return d.value.Code; }) // corresponding value returned by the button
+    .property("selected", function(d){ return d.value.Name === "Australia"; })
   });
+
 
 }
 
 // On change to the DOM, call getData()
 d3.selectAll("#selDataset").on("change", getData);
 
+d3.selectAll("#compareCountry").on("change", compareData);
+
 // Function called by DOM changes
 function getData() {
   var dropdownMenu = d3.select("#selDataset");
   // Assign the value of the dropdown menu option to a variable
   var dataset = dropdownMenu.property("value");
-  // Initialize an empty array for the country's data
-  //var data = [];
   console.log(dataset);
   buildPlot(dataset, true);
   if (dataset == 'us') {
@@ -53,9 +56,17 @@ function getData() {
       // data = canada;
       buildPlot("CA", true);
   }
-  // Call function to update the chart
-  // updatePlotly(data);
-  // console.log("here");
+}
+
+function compareData() {
+  var countryCompare = document.getElementById("compareCountry").checked;
+  console.log(countryCompare);
+  if (countryCompare) {
+    document.getElementById("selDataset2").style.display = "block";
+  }
+  else {
+      document.getElementById("selDataset2").style.display = "none";
+  }
 }
 
 function buildPlot(country_id, isInit) {
