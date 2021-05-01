@@ -29,4 +29,4 @@ Our project will look at factors to why EV adoption is increasing.  These factor
 * HTML / CSS
 * MongoDB
 
-### Site Deployment - Comming Soon!
+### Site Deployment - Coming Soon!
