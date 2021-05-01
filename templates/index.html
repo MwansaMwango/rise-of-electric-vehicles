@@ -2,29 +2,38 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Rise of Electric Vehicles</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Rise of Electric Vehicles</title>
+    <!-- Bootstrap Core -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
       integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
       crossorigin="anonymous"
     />
+    <!-- Bootstrap Theme -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootswatch@4.6.0/dist/solar/bootstrap.min.css"
     />
+    <!-- Font awesome -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     />
+    <!-- CSS Animation  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <!-- Browser Tab Icon -->
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='/image/favicon.ico') }}"
+      type="image/x-icon"
+    />
     <link rel="stylesheet" href="static/css/style.css" />
-    <style>
-      .carousel-inner > .item > img {
-        width: 100%;
-        height: 1500px;
-      }
-    </style>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   </head>
@@ -105,10 +114,16 @@
       "
     >
       <div class="container">
-        <h1 class="text-center align-text-bottom display-4">
+        <h1
+          class="text-center align-text-bottom display-4 animate__animated animate__backInDown"
+        >
           <br />The Rise of Electric Vehicles<br />has only just began...
         </h1>
-        <button id="statBtn" role="button" class="btn btn-primary">
+        <button
+          id="statBtn"
+          role="button"
+          class="btn btn-primary animate__animated animate__pulse"
+        >
           Click Here for Proof
         </button>
         <h4 id="statText" class="text-white text-center pt-2"></h4>
@@ -170,6 +185,7 @@
         </p>
 
         <span id="market-share-plot" class="mr-5"></span>
+        <!-- Data Filter -->
         <fieldset class="form-group">
           <legend><i class="fas fa-filter"></i>Data Filters</legend>
           <fieldset class="form-group">
@@ -357,7 +373,7 @@
             </p>
           </div>
         </div>
-
+        <!-- Breaking the barriers to adoption -->
         <hr />
         <div class="row text-justify">
           <h2>Tesla - Breaking the Barriers!</h2>
@@ -391,16 +407,17 @@
             supporting our road network.
           </p>
         </div>
-        <hr class="text-white" />
+        <!-- Conclusion -->
+        <hr />
         <div class="row text-justify">
           <h2>What does the future hold?</h2>
           <p>
             With manufacturing and battery innovation, government support,
             competition and climate change, the rise of EVs has already began
-            and set to explode. BloombergNEF expects that these cells could be
-            manufactured at 40% of the cost of current lithium-ion batteries,
-            when produced at scale. By 2025, Tesla strives to uphold its promise
-            of an affordable eletric car.
+            and set to explode. BloombergNEF expects that solid-state cells
+            could be manufactured at 40% of the cost of current lithium-ion
+            batteries, when produced at scale. By 2025, Tesla strives to uphold
+            its promise of an affordable eletric car.
           </p>
           <div>
             <img
