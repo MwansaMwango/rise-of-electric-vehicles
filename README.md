@@ -5,9 +5,11 @@
 From carts to steam and hydrocarbon vehicles, mankind is now entering a new phase of transportation.  Electric Vehicles are set to takeover this decade as the primary type of vehicle on our roads. 
 
 Our project will look at factors to why EV adoption is increasing.  These factors include:
-1. Price Point - Are EV's becoming more affordable.
-2. Emmissions - Does the method of electric generation have an impact on EV adoption.
-3. Charging Stations - Does the access to EV charging stations influence EV demand. 
+1. Price Point - Are EV's becoming more affordable?
+2. Sales and Production - Are EV sales and production numbers growing? If so, what are the leading manufacturers doing differently?
+3. Emmissions - Does the method of electric generation have an impact on EV adoption?
+4. Charging Stations - Does the access to EV charging stations influence EV demand? 
+5. 
 ### Project proposal
 1. Research what recent, historical data is available on EV manufacturing, emissions and electicity production.
 2. Extract, transform and load the data into a Mongo database.
@@ -17,6 +19,14 @@ Our project will look at factors to why EV adoption is increasing.  These factor
    * Graph visualisations on EV data.
    * Race chart graph on the rise of EV's using the raceplotly library (a library not used in class).
    * Details page showing a table of data that the visualisation pages are based on.
+   * 
 ### Solution Design
 ![alt_text](static/image/solution_design.png "Solution Design")
 
+### Technology Stack
+* Python - Flask with Jinja Rendering Engine
+* Javascript with AMCharts Library
+* HTML / CSS
+* MongoDB
+
+### Site Deployment - Comming Soon!
