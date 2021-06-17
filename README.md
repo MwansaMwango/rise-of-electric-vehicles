@@ -21,8 +21,10 @@ Our project will look at factors to why EV adoption is increasing.  These factor
    * Details page showing a table of data that the visualisation pages are based on.
    * 
 ### Solution Design
-![alt_text](static/image/solution_design.png "Solution Design")
+![HLD](static/image/solution_design.png "Solution Design")
 
+### Demo
+![App gif](demo_animation.short_2.gif)
 ### Technology Stack
 * Python - Flask with Jinja Rendering Engine
 * Javascript with AMCharts Library
